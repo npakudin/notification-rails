@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<% if @resp.code == '200' %>
+  <p>
+    Notification has been sent successfully
+  </p>
+
+  <%= "#{@resp.body}" %>
+
+<% else %>
+  <p>
+    Notification has been with error
+  </p>
+
+  Google response:
+  <%= "#{@resp.code} - #{@resp.message}" %>
+  <%= "#{@resp.body}" %>
+
+<% end %>
+
+<p>
+<%= link_to 'Back', @tablet %>

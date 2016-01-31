@@ -1,19 +1,24 @@
 Rails.application.routes.draw do
 
-  resources :tablets
+  resources :tablets do
+    post 'send_notification' => 'tablets#send_notification'
+  end
   devise_for :users
 
   namespace :api do
     namespace :v1 do
-      post 'api/do_it' => 'api#do_it'
+      post 'tablets/register' => 'tablets#register'
+      post 'tablets/data_accepted' => 'tablets#data_accepted'
+      post 'tablets/data_declined' => 'tablets#data_declined'
     end
   end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'tablets#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

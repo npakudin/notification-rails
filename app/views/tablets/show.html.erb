@@ -10,5 +10,12 @@
   <%= @tablet.token %>
 </p>
 
+<%= form_tag("#{tablet_send_notification_path(tablet_id: @tablet.id)}", method: "post") do %>
+    <%= label_tag(:customer_first_name, "Customer first name:") %>
+    <%= text_field_tag(:customer_first_name) %>
+    <%= submit_tag("Send notification") %>
+<% end %>
+
+
 <%= link_to 'Edit', edit_tablet_path(@tablet) %> |
 <%= link_to 'Back', tablets_path %>

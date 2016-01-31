@@ -1,4 +1,7 @@
 class TabletsController < ApplicationController
+  include TabletsHelper
+
+  before_action :authenticate_user!
   before_action :set_tablet, only: [:show, :edit, :update, :destroy]
 
   # GET /tablets
@@ -59,6 +62,14 @@ class TabletsController < ApplicationController
       format.html { redirect_to tablets_url, notice: 'Tablet was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # POST /tablets/1/send_notification
+  def send_notification
+    @tablet = Tablet.find(params[:tablet_id])
+
+    customer_first_name = params.require(:customer_first_name)
+    send_notification_to_tablet(customer_first_name)
   end
 
   private

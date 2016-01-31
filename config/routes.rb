@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tablets
   devise_for :users
 
   namespace :api do

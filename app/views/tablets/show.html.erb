@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tablet.name %>
+</p>
+
+<p>
+  <strong>Token:</strong>
+  <%= @tablet.token %>
+</p>
+
+<%= link_to 'Edit', edit_tablet_path(@tablet) %> |
+<%= link_to 'Back', tablets_path %>

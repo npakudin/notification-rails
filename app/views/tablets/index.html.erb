@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tablets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Token</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tablets.each do |tablet| %>
+      <tr>
+        <td><%= tablet.name %></td>
+        <td><%= tablet.token %></td>
+        <td><%= link_to 'Show', tablet %></td>
+        <td><%= link_to 'Edit', edit_tablet_path(tablet) %></td>
+        <td><%= link_to 'Destroy', tablet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tablet', new_tablet_path %>

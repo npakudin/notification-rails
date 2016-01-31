@@ -5,18 +5,18 @@
     Notification has been sent successfully
   </p>
 
-  <%= "#{@resp.body}" %>
-
 <% else %>
   <p>
     Notification has been with error
   </p>
 
-  Google response:
-  <%= "#{@resp.code} - #{@resp.message}" %>
-  <%= "#{@resp.body}" %>
-
 <% end %>
+
+
+Google response:<br/>
+<%= "#{@resp.code} - #{@resp.message}" %><br/>
+<%= "#{@resp.body}" %>
+
 
 <p>
 <%= link_to 'Back', @tablet %>

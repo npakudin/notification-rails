@@ -69,7 +69,7 @@ class TabletsController < ApplicationController
     @tablet = Tablet.find(params[:tablet_id])
 
     customer_first_name = params.require(:customer_first_name)
-    send_notification_to_tablet(customer_first_name)
+    send_notification_to_tablet(@tablet, customer_first_name)
   end
 
   private

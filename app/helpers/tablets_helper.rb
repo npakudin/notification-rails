@@ -6,13 +6,14 @@ module TabletsHelper
 
   API_KEY = "AIzaSyAL8AoMcMR_fLZeMkFaEAtwOYfvUoOWIG0"
 
-  def send_notification_to_tablet(customer_first_name)
+  def send_notification_to_tablet(tablet, customer_first_name)
     params =
       {
         data: {
           message: customer_first_name,
         },
-        to: "/topics/global",
+        #to: "/topics/global",
+        to: tablet.token,
       }
 
     url = URI.parse('https://android.googleapis.com/gcm/send')

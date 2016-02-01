@@ -11,8 +11,18 @@
 </p>
 
 <%= form_tag("#{tablet_send_notification_path(tablet_id: @tablet.id)}", method: "post") do %>
-    <%= label_tag(:customer_first_name, "Customer first name:") %>
-    <%= text_field_tag(:customer_first_name) %>
+    <%= label_tag(:first_name, "First name:") %>
+    <%= text_field_tag(:first_name) %>
+
+    <%= label_tag(:last_name, "Last name:") %>
+    <%= text_field_tag(:last_name) %>
+
+    <%= label_tag(:address, "Address:") %>
+    <%= text_field_tag(:address) %>
+
+    <%= label_tag(:account_number, "Account number:") %>
+    <%= text_field_tag(:account_number) %>
+
     <%= submit_tag("Send notification") %>
 <% end %>
 

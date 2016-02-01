@@ -1,3 +1,5 @@
+require 'uuid_helper'
+
 class TabletsController < ApplicationController
   include TabletsHelper
 
@@ -68,8 +70,22 @@ class TabletsController < ApplicationController
   def send_notification
     @tablet = Tablet.find(params[:tablet_id])
 
-    customer_first_name = params.require(:customer_first_name)
-    send_notification_to_tablet(@tablet, customer_first_name)
+    # TODO: save message_uuid to db
+    message_uuid = UUIDHelper.new_uuid_string
+    first_name = params.require(:first_name)
+    last_name = params.require(:last_name)
+    address = params.require(:address)
+    account_number = params.require(:account_number)
+
+    specific_params = {
+      message_uuid: message_uuid,
+      first_name: first_name,
+      last_name: last_name,
+      address: address,
+      account_number: account_number,
+    }
+
+    send_notification_to_tablet(@tablet, specific_params)
   end
 
   private

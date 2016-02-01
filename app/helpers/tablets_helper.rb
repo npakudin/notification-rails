@@ -6,12 +6,10 @@ module TabletsHelper
 
   API_KEY = "AIzaSyAL8AoMcMR_fLZeMkFaEAtwOYfvUoOWIG0"
 
-  def send_notification_to_tablet(tablet, customer_first_name)
+  def send_notification_to_tablet(tablet, specific_params)
     params =
       {
-        data: {
-          message: customer_first_name,
-        },
+        data: specific_params,
         #to: "/topics/global",
         to: tablet.token,
       }

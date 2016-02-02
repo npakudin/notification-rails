@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uuid</th>
+      <th>Payload</th>
+      <th>Gcm response</th>
+      <th>Gcm response code</th>
+      <th>Accept status</th>
+      <th>Tablet</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.uuid %></td>
+        <td><%= message.payload %></td>
+        <td><%= message.gcm_response %></td>
+        <td><%= message.gcm_response_code %></td>
+        <td><%= message.accept_status %></td>
+        <td><%= message.tablet %></td>
+        <td><%= link_to 'Show', message %></td>
+        <td><%= link_to 'Edit', edit_message_path(message) %></td>
+        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Message', new_message_path %>

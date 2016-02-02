@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :messages
   resources :tablets do
     post 'send_notification' => 'tablets#send_notification'
   end

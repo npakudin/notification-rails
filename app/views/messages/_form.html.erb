@@ -1,0 +1,41 @@
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uuid %><br>
+    <%= f.text_field :uuid %>
+  </div>
+  <div class="field">
+    <%= f.label :payload %><br>
+    <%= f.text_field :payload %>
+  </div>
+  <div class="field">
+    <%= f.label :gcm_response %><br>
+    <%= f.text_field :gcm_response %>
+  </div>
+  <div class="field">
+    <%= f.label :gcm_response_code %><br>
+    <%= f.number_field :gcm_response_code %>
+  </div>
+  <div class="field">
+    <%= f.label :accept_status %><br>
+    <%= f.number_field :accept_status %>
+  </div>
+  <div class="field">
+    <%= f.label :tablet_id %><br>
+    <%= f.text_field :tablet_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

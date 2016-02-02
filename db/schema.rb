@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131122612) do
+ActiveRecord::Schema.define(version: 20160202085345) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "uuid"
+    t.json     "payload"
+    t.json     "gcm_response"
+    t.integer  "gcm_response_code"
+    t.integer  "accept_status"
+    t.integer  "tablet_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "messages", ["tablet_id"], name: "index_messages_on_tablet_id", using: :btree
 
   create_table "tablets", force: :cascade do |t|
     t.string   "name"
@@ -31,11 +47,13 @@ ActiveRecord::Schema.define(version: 20160131122612) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "is_admin"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "messages", "tablets"
 end

@@ -10,6 +10,7 @@ class TabletsController < ApplicationController
   # GET /tablets.json
   def index
     @tablets = Tablet.all
+    @user = current_user
   end
 
   # GET /tablets/1

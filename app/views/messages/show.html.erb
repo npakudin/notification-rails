@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uuid:</strong>
+  <%= @message.uuid %>
+</p>
+
+<p>
+  <strong>Payload:</strong>
+  <%= @message.payload %>
+</p>
+
+<p>
+  <strong>Gcm response:</strong>
+  <%= @message.gcm_response %>
+</p>
+
+<p>
+  <strong>Gcm response code:</strong>
+  <%= @message.gcm_response_code %>
+</p>
+
+<p>
+  <strong>Accept status:</strong>
+  <%= @message.accept_status %>
+</p>
+
+<p>
+  <strong>Tablet:</strong>
+  <%= @message.tablet %>
+</p>
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

@@ -27,7 +27,15 @@ module TabletsHelper
     con.verify_mode = OpenSSL::SSL::VERIFY_NONE # read into this
     con.start do |http|
       @resp = http.request(req)
-      w = 1
+
+      Message.create!(
+        tablet_id: tablet.id,
+        uuid: specific_params[:message_uuid],
+        payload: specific_params,
+        gcm_response: @resp.body,
+        gcm_response_code: @resp.code,
+        accept_status: Message::ACCEPT_STATUS_SENT,
+      )
     end
   end
 end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uuid: MyString
+  payload: 
+  gcm_response: 
+  gcm_response_code: 1
+  accept_status: 1
+  tablet_id: 
+
+two:
+  uuid: MyString
+  payload: 
+  gcm_response: 
+  gcm_response_code: 1
+  accept_status: 1
+  tablet_id: 

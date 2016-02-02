@@ -78,15 +78,14 @@ class TabletsController < ApplicationController
     address = params.require(:address)
     account_number = params.require(:account_number)
 
-    specific_params = {
-      message_uuid: message_uuid,
+    payload = {
       first_name: first_name,
       last_name: last_name,
       address: address,
       account_number: account_number,
     }
 
-    send_notification_to_tablet(@tablet, specific_params)
+    send_notification_to_tablet(@tablet, message_uuid, payload)
   end
 
   private

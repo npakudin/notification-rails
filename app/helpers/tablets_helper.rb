@@ -6,10 +6,13 @@ module TabletsHelper
 
   API_KEY = "AIzaSyAL8AoMcMR_fLZeMkFaEAtwOYfvUoOWIG0"
 
-  def send_notification_to_tablet(tablet, specific_params)
+  def send_notification_to_tablet(tablet, message_uuid, payload)
     params =
       {
-        data: specific_params,
+        data: {
+          message_uuid: message_uuid,
+          payload: payload,
+        },
         #to: "/topics/global",
         to: tablet.token,
       }
@@ -30,11 +33,11 @@ module TabletsHelper
 
       Message.create!(
         tablet_id: tablet.id,
-        uuid: specific_params[:message_uuid],
-        payload: specific_params,
+        uuid: message_uuid,
+        payload: payload,
         gcm_response: @resp.body,
         gcm_response_code: @resp.code,
-        accept_status: Message::ACCEPT_STATUS_SENT,
+        accept_status: Message::ACCEPT_STATUS_NONE,
       )
     end
   end

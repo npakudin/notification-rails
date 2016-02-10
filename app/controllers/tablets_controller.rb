@@ -16,6 +16,7 @@ class TabletsController < ApplicationController
   # GET /tablets/1
   # GET /tablets/1.json
   def show
+    @user = current_user
   end
 
   # GET /tablets/new
@@ -69,6 +70,8 @@ class TabletsController < ApplicationController
 
   # POST /tablets/1/send_notification
   def send_notification
+
+    @user = current_user
     @tablet = Tablet.find(params[:tablet_id])
 
     # TODO: save message_uuid to db

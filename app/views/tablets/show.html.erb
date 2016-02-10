@@ -1,16 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @tablet.name %>
-</p>
+<% if @user.is_admin %>
 
-<p>
-  <strong>Token:</strong>
-  <%= @tablet.token %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @tablet.name %>
+  </p>
 
-<%= form_tag("#{tablet_send_notification_path(tablet_id: @tablet.id)}", method: "post") do %>
+  <p>
+    <strong>Token:</strong>
+    <%= @tablet.token %>
+  </p>
+
+  <%= link_to 'Edit', edit_tablet_path(@tablet) %> |
+<% else %>
+    <p>
+      Show on tablet:
+    </p>
+<% end %>
+
+  <%= form_tag("#{tablet_send_notification_path(tablet_id: @tablet.id)}", method: "post") do %>
     <%= label_tag(:first_name, "First name:") %>
     <%= text_field_tag(:first_name) %>
 
@@ -23,9 +32,8 @@
     <%= label_tag(:account_number, "Account number:") %>
     <%= text_field_tag(:account_number) %>
 
-    <%= submit_tag("Send notification") %>
+    <%= submit_tag("Show") %>
 <% end %>
 
 
-<%= link_to 'Edit', edit_tablet_path(@tablet) %> |
 <%= link_to 'Back', tablets_path %>

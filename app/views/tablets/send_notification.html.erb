@@ -1,25 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<% if @resp.code == '200' %>
+<% if @user.is_admin %>
+  <% if @resp.code == '200' %>
+    <p>
+      Notification has been sent successfully
+    </p>
+
+  <% else %>
+    <p>
+      Notification has been with error
+    </p>
+
+  <% end %>
+
+
+  Google response:<br/>
+  <%= "#{@resp.code} - #{@resp.message}" %><br/>
+  <%= "#{@resp.body}" %>
+
+
   <p>
-    Notification has been sent successfully
-  </p>
+  <%= link_to 'Back', @tablet %>
+  <%= link_to 'All messages', messages_path %>
 
 <% else %>
-  <p>
-    Notification has been with error
-  </p>
+    <% if @resp.code == '200' %>
+        <p>
+          Wait while user accepting data...
+        </p>
+    <% else %>
+        <p>
+          Error, ask administrator for help
+        </p>
+    <% end %>
+    <%= link_to 'Back', @tablet %>
 
 <% end %>
-
-
-Google response:<br/>
-<%= "#{@resp.code} - #{@resp.message}" %><br/>
-<%= "#{@resp.body}" %>
-
-
-<p>
-<%= link_to 'Back', @tablet %>
-<%= link_to 'All messages', messages_path %>
 
 <div id="data" data-tablet_id="<%= @tablet.id %>"></div>

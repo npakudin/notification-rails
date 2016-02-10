@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% unless @user.is_admin %>
+<% if @user.is_admin %>
 
   <h1>Listing Tablets</h1>
 

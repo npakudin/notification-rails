@@ -1,3 +1,7 @@
+require 'eventmachine'
+require "base64"
+
+
 class Api::V1::TabletsController < ApplicationController
 
   include Api::V1::TabletsHelper
@@ -19,6 +23,16 @@ class Api::V1::TabletsController < ApplicationController
   end
 
   def data_accepted
+
+    permitted_params = params.require(:tablet).permit(:token)
+    tablet = Tablet.where(token: permitted_params[:token]).first
+
+    EM.run do
+      client = Faye::Client.new("#{request.protocol}#{request.host}:#{request.port}/faye")
+
+      client.publish("/tablet_#{tablet.id}", 'text' => 'Data accepted')
+    end
+
     render json: 'data_accepted'
   end
 

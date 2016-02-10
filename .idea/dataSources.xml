@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1862163780">
+  <component name="DataSourceManagerImpl" format="xml" hash="4139205600">
     <data-source source="LOCAL" name="notification-rails@localhost" uuid="26c46bfa-4047-40a6-8fcd-afc1bde3d2aa">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>

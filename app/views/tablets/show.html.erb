@@ -14,25 +14,36 @@
 
   <%= link_to 'Edit', edit_tablet_path(@tablet) %> |
 <% else %>
-    <p>
-      Show on tablet:
-    </p>
+    <h1 class="h1">
+      Show user data on tablet:
+    </h1>
 <% end %>
 
   <%= form_tag("#{tablet_send_notification_path(tablet_id: @tablet.id)}", method: "post") do %>
-    <%= label_tag(:first_name, "First name:") %>
-    <%= text_field_tag(:first_name) %>
+    <div class="form-group">
+      <%= label_tag(:first_name, "First name:") %>
+      <%= text_field_tag :first_name , "John", { class: "form-control" } %>
+    </div>
 
-    <%= label_tag(:last_name, "Last name:") %>
-    <%= text_field_tag(:last_name) %>
+    <div class="form-group">
+      <%= label_tag(:last_name, "Last name:") %>
+      <%= text_field_tag :last_name, "Smith", { class: "form-control" } %>
+    </div>
 
-    <%= label_tag(:address, "Address:") %>
-    <%= text_field_tag(:address) %>
+    <div class="form-group">
+      <%= label_tag(:address, "Address:") %>
+      <%= text_field_tag :address, "White house", { class: "form-control" } %>
+    </div>
 
-    <%= label_tag(:account_number, "Account number:") %>
-    <%= text_field_tag(:account_number) %>
+    <div class="form-group">
+      <%= label_tag(:account_number, "Account number:") %>
+      <%= text_field_tag :account_number, "123", { class: "form-control" } %>
+    </div>
 
-    <%= submit_tag("Show") %>
+    <div class="form-group">
+      <%= submit_tag "Show", { class: "btn btn-primary form-control" } %>
+    </div>
+
 <% end %>
 
 

@@ -26,10 +26,12 @@ class Api::V1::TabletsController < ApplicationController
       end
     else
 
-      if @tablet.update(tablet_params)
-        format.json { render :show, status: :ok, location: @tablet }
-      else
-        format.json { render json: @tablet.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @tablet.update(tablet_params)
+          format.json { render :show, status: :ok, location: @tablet }
+        else
+          format.json { render json: @tablet.errors, status: :unprocessable_entity }
+        end
       end
     end
 

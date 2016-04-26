@@ -29,7 +29,8 @@
   },
   "addons": [
     "logentries",
-    "heroku-postgresql"
+    "heroku-postgresql",
+    "cloudampq"
   ],
   "buildpacks": [
     {
